@@ -1,6 +1,6 @@
 namespace MauiAppMinhasCompras.Views;
 
-public partial class NovoProduto : ResourceDictionary
+public partial class NovoProduto : ContentPage
 {
 	public NovoProduto()
 	{
