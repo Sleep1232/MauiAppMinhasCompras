@@ -5,13 +5,46 @@
              Title="Minhas Compras">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Somar" /> <!--botão soma -->
+        <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1"/> <!--botão soma -->
         <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked"/> <!--Evento ao clicar o botão, executa ação-->
     </ContentPage.ToolbarItems>
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <!-- x:Name - para capturar dado digitado pelo usuário -->
+        <!-- x:Name funciona como um identificador, permitindo a manipulçao do objeto-->
+        <!-- PlaceHolder - campo exemplo, instruir o usuário o que deve ser digitado-->
+        <!--ListView exibe uma lista para o usuário com os dados do BD-->
+        <SearchBar x:Name ="txt_search" Placeholder="Busca de Produtos" 
+                   TextChanged="txt_search_TextChanged"/>
+        <ListView x:Name="lst_produtos">
+            <ListView.Header> <!--cabeçalho da lista-->
+                <Grid ColumnDefinitions="*,*,*,*,*,*"><!-- uso de grid para melhor layout,
+                os títulos serão apresentados em colunas, o * é um coringa para manter a proporção-->
+                    <Label Grid.Column="0"  Text="ID"/> <!-- binding torna o dinãmica a ação-->
+                    <Label Grid.Column="1"  Text="Descrição" />
+                    <Label Grid.Column="2"  Text="Preço" />
+                    <Label Grid.Column="3"  Text="Quantidade" />
+                    <Label Grid.Column="4"  Text="Total" />
+
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate> <!--corpo da lista, itens-->
+                <DataTemplate>
+                    <ViewCell><!-- célula de visulização, pode receber um menu de contexto-->
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
+                        </ViewCell.ContextActions>
+                        <Grid ColumnDefinitions="*,*,*,*,*,*">
+                            <Label Grid.Column="0"  Text="{Binding ID}"/><!-- binding torna o dinãmica a ação-->
+                            <Label Grid.Column="1"  Text="{Binding Descricao}" />
+                            <Label Grid.Column="2"  Text="{Binding Preco}" />
+                            <Label Grid.Column="3"  Text="{Binding Quantidade}" />
+                            <Label Grid.Column="4"  Text="{Binding Total}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        
     </VerticalStackLayout>
 </ContentPage>
