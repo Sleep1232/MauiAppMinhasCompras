@@ -28,7 +28,7 @@ namespace MauiAppMinhasCompras.Helpers
         //Atualiza um registro existente na tabela Produto com base no id fornecido
         public Task<List<Produto>> Update(Produto p) 
         {
-            string sql = "UPDATE Produto SET Descricao=?, Quantidade=?, Preco=?, WHERE Id=?";
+            string sql = "UPDATE Produto SET Descricao=?, Quantidade=?, Preco=? WHERE Id=?";
 
             return _conn.QueryAsync<Produto>(
                 sql, p.Descricao, p.Quantidade, p.Preco, p.Id);
@@ -49,7 +49,7 @@ namespace MauiAppMinhasCompras.Helpers
         //método Search realiza uma busca na tabela
         public Task<List<Produto>> Search(string q) 
         {
-            string sql = "Select * From Produto Where Descricao  Like '%" + q + "%'";
+            string sql = "SELECT * FROM Produto WHERE Descricao  LIKE'%" + q + "%'";
 
             return _conn.QueryAsync<Produto>(sql);
         }

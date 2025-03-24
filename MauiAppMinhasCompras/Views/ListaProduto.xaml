@@ -15,9 +15,9 @@
         <!--ListView exibe uma lista para o usuário com os dados do BD-->
         <SearchBar x:Name ="txt_search" Placeholder="Busca de Produtos" 
                    TextChanged="txt_search_TextChanged"/>
-        <ListView x:Name="lst_produtos">
+        <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected">
             <ListView.Header> <!--cabeçalho da lista-->
-                <Grid ColumnDefinitions="*,*,*,*,*,*"><!-- uso de grid para melhor layout,
+                <Grid ColumnDefinitions="*,*,*,*,*"><!-- uso de grid para melhor layout,
                 os títulos serão apresentados em colunas, o * é um coringa para manter a proporção-->
                     <Label Grid.Column="0"  Text="ID"/> <!-- binding torna o dinãmica a ação-->
                     <Label Grid.Column="1"  Text="Descrição" />
@@ -33,7 +33,7 @@
                         <ViewCell.ContextActions>
                             <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
                         </ViewCell.ContextActions>
-                        <Grid ColumnDefinitions="*,*,*,*,*,*">
+                        <Grid ColumnDefinitions="*,*,*,*,*">
                             <Label Grid.Column="0"  Text="{Binding ID}"/><!-- binding torna o dinãmica a ação-->
                             <Label Grid.Column="1"  Text="{Binding Descricao}" />
                             <Label Grid.Column="2"  Text="{Binding Preco}" />
