@@ -18,6 +18,8 @@ public partial class ListaProduto : ContentPage
 											// construtor, não interfere no mesmo, evita de ficar preso 
 											// na leitura dos dados do sqlite
     {
+		lista.Clear(); //limpa observecolletion e recarrega a lista
+
 		//lista = await App.Db.GetAll(); - forma que não seria possível - erro na conversão de dados
 		List<Produto> tmp = await App.Db.GetAll();
 
